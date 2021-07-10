@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.db.models.fields import CharField
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 # Create your models here.
 class CustomUser(AbstractUser):
@@ -118,7 +119,7 @@ class ProductReviews(models.Model):
     product_id=models.ForeignKey(Products, on_delete=models.CASCADE)
     user_id=models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     review_image=models.FileField()
-    rating=models.CharField(default="5")
+    rating=models.CharField(default="5", max_length=255)
     review=models.TextField(default="")
     created_at=models.DateTimeField(auto_now_add=True)
     is_active=models.IntegerField(default=1)
