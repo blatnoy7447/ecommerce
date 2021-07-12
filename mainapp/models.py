@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-# Create your models here.
+
 class CustomUser(AbstractUser):
     user_type_choices=((1,"Admin"), (2,"Staff"), (3,"Merchant"), (4, "Customer"))
     user_type=models.CharField(max_length=255, choices=user_type_choices, default=1)
