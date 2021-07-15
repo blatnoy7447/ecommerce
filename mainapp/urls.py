@@ -1,15 +1,11 @@
 from django.urls import path
-from .views import HomePageView, AboutPageView, ContactPageView, GalleryPageView
 from django.conf.urls.static import static
 from ecommerce import settings
-from mainapp import AdminViews
+from mainapp import AdminViews,views
 
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
-    path('about/', AboutPageView.as_view(), name='about'),
-    path('contact/', ContactPageView.as_view(), name='contact'),
-    path('gallery/', GalleryPageView.as_view(), name='gallery'),
+    path('admin_login_process/',views.adminLoginProcess,name="admin_login_process"),
 
     # PAGE FOR ADMIN
     path('admin_home',AdminViews.admin_home)
