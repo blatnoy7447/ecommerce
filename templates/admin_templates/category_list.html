@@ -1,0 +1,23 @@
+{% extends 'admin_templates/base_template.html' %}
+{% block title %}
+Category List
+{% endblock title %}
+
+{% block custom_css %}
+{% endblock custom_css %}
+
+{% block page_title %}
+Category List
+{% endblock page_title %}
+
+{% block page_content %}
+{% for category in category_list %}
+<p>{{ category.title }}</p>
+{% endfor %}
+{% endblock page_content %}
+
+{% block custom_js %}
+{% endblock custom_js %}
+  
+
+  
