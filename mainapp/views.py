@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.urls import reverse
 
@@ -17,6 +17,10 @@ def adminLoginProcess(request):
         login(request=request,user=user)
         return HttpResponseRedirect(reverse("admin_home"))
     else:
-        messages.error(request,"Error in Login! Invalid Login Details!")
+        messages.error(request,"Error in Login or Password! Invalid Login or Password Details!")
         return HttpResponseRedirect(reverse("admin_login"))
 
+def adminLogoutProcess(request):
+    logout(request)
+    messages.success(request,"Logout Successfully!")
+    return HttpResponseRedirect(reverse("admin_login"))

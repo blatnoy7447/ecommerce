@@ -49,6 +49,11 @@
                         {{ message }}
                       </div>
                       {% endif %}
+                      {% if message.tags == "success" %}
+                      <div class="alert alert-success">
+                        {{ message }}
+                      </div>
+                      {% endif %}
                     {% endfor %}
                   </div>
                   {%  endif %}
