@@ -77,6 +77,11 @@
   <script src="{% static '/js/custom.js' %}"></script>
   {% block custom_js %}
   {% endblock custom_js %}
+  <script>
+    document.getElementById("title").onkeyup=function(){
+      document.getElementById("url_slug").value=document.getElementById("title").value.toLowerCase().replace(" ","-");
+    }
+  </script>
   </body>
   </html>
 
