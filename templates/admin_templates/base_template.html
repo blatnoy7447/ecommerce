@@ -24,6 +24,11 @@
   <link rel="stylesheet" href="{% static '/css/components.css' %}">
   {% block custom_css %}
   {% endblock custom_css %}
+  <style>
+    ul.errorlist{
+      margin: 0px;
+    }
+  </style>
   </head>
 
   <body>
@@ -47,7 +52,7 @@
           {% endif %}
           {% if message.tags == "error" %}
           <div class="alert alert-danger">
-          {{ message }}
+            {{ message }}
           </div>
           {% endif %}
           {% endfor %}

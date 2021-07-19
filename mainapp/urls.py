@@ -11,7 +11,8 @@ urlpatterns = [
     # PAGE FOR ADMIN
     path('admin_home/',AdminViews.admin_home,name='admin_home'),
     path('category_list',AdminViews.CategoriesListView.as_view(),name="category_list"),
-    path('category_create',AdminViews.CategoriesCreate.as_view(),name="category_create")
+    path('category_create',AdminViews.CategoriesCreate.as_view(),name="category_create"),
+    path('category_update/<slug:pk>',AdminViews.CategoriesUpdate.as_view(),name="category_update")
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(
     settings.STATIC_URL,document_root=settings.STATICFILES_DIRS
 )
