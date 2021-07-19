@@ -11,6 +11,7 @@ def admin_home(request):
 class CategoriesListView(ListView):
     model=Categories
     template_name="admin_templates/category_list.html"
+    context_object_name='categories'
 
 class CategoriesCreate(CreateView):
     model=Categories
