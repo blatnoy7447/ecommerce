@@ -85,5 +85,42 @@ class MerchantUserCreateView(SuccessMessageMixin, CreateView):
         messages.success(self.request,"Merchant User Created")
         return HttpResponseRedirect(reverse("merchant_list"))
         
+class MerchantUserUpdateView(SuccessMessageMixin, UpdateView):
+    template_name="admin_templates/merchant_update.html"
+    model=CustomUser
+    fields=["first_name","last_name","email","username","password"]
+
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        merchantuser=MerchantUser.objects.get(auth_user_id=self.object.pk)
+        context["merchantuser"]=merchantuser
+        return context
+
+    def form_valid(self, form):
+        #Saving Custom User Object for Merchant User
+        user=form.save(commit=False)
+        user.is_active=True
+        user.user_type=3
+        user.set_password(form.cleaned_data["password"])
+        user.save()
+        #Saving Merchant User
+        profile_pic=self.request.FILES["profile_pic"]
+        fs=FileSystemStorage()
+        filename=fs.save(profile_pic.name,profile_pic)
+        profile_pic_url=fs.url(filename)
+
+        user.merchantuser.profile_pic=profile_pic_url
+        user.merchantuser.company_name=self.request.POST.get("company_name")
+        user.merchantuser.gst_details=self.request.POST.get("gst_details")
+        user.merchantuser.address=self.request.POST.get("address")
+        is_added_by_admin=False
+
+        if self.request.POST.get("is_added_by_admin")=="on":
+            is_added_by_admin=True
+
+        user.merchantuser.is_added_by_admin=is_added_by_admin
+        user.save()
+        messages.success(self.request,"Merchant User Created")
+        return HttpResponseRedirect(reverse("merchant_list"))
 
 
