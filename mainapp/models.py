@@ -21,10 +21,11 @@ class StaffUser(models.Model):
 
 class MerchantUser(models.Model):
     auth_user_id=models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    profile_pic=models.FileField()
+    profile_pic=models.FileField(default="")
     company_name=models.CharField(max_length=255)
     gst_details=models.CharField(max_length=255)
     address=models.TextField()
+    is_added_by_admin=models.BooleanField(default=False)
     created_at=models.DateTimeField(auto_now_add=True)
 
 class CustomerUser(models.Model):
