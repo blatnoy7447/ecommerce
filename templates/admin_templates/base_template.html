@@ -35,7 +35,7 @@
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       {% include 'admin_templates/navbar.html' %}
-      {% include 'admin_templates/sidebar.html' %}
+      {% include 'admin_templates/sidebar.html' with id=form.instance.id %}
             
       <!-- Main Content -->
       <div class="main-content">
