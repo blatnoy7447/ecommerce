@@ -26,9 +26,7 @@ class CategoriesListView(ListView):
         order_by=self.request.GET.get("orderby", "id")
 
         if filter_val != "":
-            cat=Categories.objects.filter(
-                Q(title__contains=filter_val) | Q(description__contains=filter_val).order_by(order_by)
-            )
+            cat=Categories.objects.filter(Q(title__contains=filter_val) | Q(description__contains=filter_val)).order_by(order_by)
         else:
             cat=Categories.objects.all().order_by(order_by)
         
