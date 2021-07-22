@@ -8,6 +8,7 @@ from django.urls import reverse
 def adminLogin(request):
     return render(request, "admin_templates/signin.html")
 
+#login password process
 def adminLoginProcess(request):
     username=request.POST.get("username")
     password=request.POST.get("password")
