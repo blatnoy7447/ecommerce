@@ -57,7 +57,7 @@ class SubCategories(models.Model):
     description=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
     is_active=models.IntegerField(default=1)
-
+    
     def get_absolute_url(self):
         return reverse("sub_category_list")
     
