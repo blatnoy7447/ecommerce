@@ -3,6 +3,7 @@
 Merchant Update
 {% endblock title %}
 
+
 {% block custom_css %}
 {% endblock custom_css %}
 
@@ -13,7 +14,7 @@ Merchant Update
 {% block page_content %}
 
 <div class="row">
-<div class="col-12 col-md col-lg-12">
+<div class="col-12 col-md-12 col-lg-12">
 <div class="card">
     <div class="card-header">
     <h4>Merchant Users Update</h4>
@@ -25,22 +26,23 @@ Merchant Update
         <div class="form-group">
             <label>{{ field.label }}</label>
             <input type="{{ field.field.widget.input_type }}" name={{ field.name }} id="{{ field.name }}" class="form-control" value='{{ field.value }}'>
+            {% if field.errors %}
+            <div class="alert alert-danger" style="margin:10px">
+                {{ field.errors }}
+            </div>
+            {% endif %}
         </div>
-        {% if field.errors %}
-        <div class="alert alert-danger" style="margin: 10px;">
-            {{ field.errors }}
-        </div>
-        {% endif %}
         {% endfor %}
-        <div class="form-group">
+          <div class="form-group">
             <label>Current Profile Image</label><br>
-            <img src="{{ merchantuser.profile_pic }}" style="height: 150px;">
+            <img src='{{ merchantuser.profile_pic }}' style='height:150px'/>
         </div>
-        <div class="form-group">
+         <div class="form-group">
             <label>Profile Image</label>
             <input type="file" name="profile_pic" id="profile_pic" class="form-control">
         </div>
-        <div class="form-group">
+
+      <div class="form-group">
             <label>Company</label>
             <input type="text" name="company_name" id="company_name" class="form-control" value="{{ merchantuser.company_name }}">
         </div>
@@ -53,18 +55,22 @@ Merchant Update
             <input type="text" name="address" id="address" class="form-control" value="{{ merchantuser.address }}">
         </div>
         <div class="form-group">
-            <label class="custom-switch mt-2">
-                <input type="checkbox" name="is_added_by_admin" class="custom-switch-input" {% if merchantuser.is_added_by_admin == True %} checked {% endif %}>
-                <span class="custom-switch-indicator"></span>
-                <span class="custom-switch-description">Is Added By Admin?</span>
-            </label>
+        <label class="custom-switch mt-2">
+                        <input type="checkbox" name="is_added_by_admin" class="custom-switch-input" {% if merchantuser.is_added_by_admin == True  %} checked {% endif %}>
+                        <span class="custom-switch-indicator"></span>
+                        <span class="custom-switch-description">Is Added By Admin?</span>
+          </label>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Save Merchant User</button>
+
+
+        <button type="submit" class="btn btn-primary btn-block">SAVE MERCHANT USER</button>
     </form>
 </div>
 </div>
 </div>
+</div>
 {% endblock page_content %}
+
 
 {% block custom_js %}
 {% endblock custom_js %}

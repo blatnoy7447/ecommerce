@@ -1,6 +1,6 @@
 {% extends 'admin_templates/base_template.html' %}
 {% block title %}
-Category Update
+Staff Create
 {% endblock title %}
 
 
@@ -8,7 +8,7 @@ Category Update
 {% endblock custom_css %}
 
 {% block page_title %}
-Category Update
+Staff Create
 {% endblock page_title %}
 
 {% block page_content %}
@@ -17,7 +17,7 @@ Category Update
 <div class="col-12 col-md-12 col-lg-12">
 <div class="card">
     <div class="card-header">
-    <h4>Categories</h4>
+    <h4>Staff Users</h4>
     </div>
     <div class="card-body">
     <form method="post" enctype="multipart/form-data">
@@ -25,27 +25,25 @@ Category Update
         {% for field in form %}
         <div class="form-group">
             <label>{{ field.label }}</label>
-            <input type="{{ field.field.widget.input_type }}" name={{ field.name }} id="{{ field.name }}" class="form-control" value={{field.value}}>
+            <input type="{{ field.field.widget.input_type }}" name={{ field.name }} id="{{ field.name }}" class="form-control">
             {% if field.errors %}
             <div class="alert alert-danger" style="margin:10px">
                 {{ field.errors }}
             </div>
             {% endif %}
         </div>
-        {% if field.field.widget.input_type == "file" %}
-        <div class="form-group">
-        <label>Current {{ field.label }}</label><br>
-        <div class="card">
-                  <div class="card-body">
-                                  <img src="/media/{{ field.value }}" style="height:250px"/>
-                  </div>
-                </div>
-        </div>
-        {% endif %}
-
         {% endfor %}
-        <button type="submit" class="btn btn-primary btn-block">SAVE CATEGORY</button>
+         <div class="form-group">
+            <label>Profile Image</label>
+            <input type="file" name="profile_pic" id="profile_pic" class="form-control">
+        </div>
+
+  
+
+
+        <button type="submit" class="btn btn-primary btn-block">SAVE STAFF USER</button>
     </form>
+</div>
 </div>
 </div>
 </div>
